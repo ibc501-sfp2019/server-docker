@@ -1,3 +1,2 @@
 gate_mysql/*
-observe_mysql/*
-world_mysql/*
+!gate_mysql/.keep
