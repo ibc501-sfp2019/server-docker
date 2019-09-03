@@ -5,3 +5,4 @@ WORKDIR /gate_code
 COPY gate_requirements.txt /gate_code/
 RUN pip install -r gate_requirements.txt
 COPY . /gate_code/
+CMD ["python manage.py migrate"]
