@@ -19,6 +19,8 @@ services:
     command: python ./gate_code/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/gate_code
+    environment:
+      - PLAY_FLG=1
     ports:
       - "8000:8000"
     depends_on:
