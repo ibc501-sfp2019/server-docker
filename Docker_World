@@ -1,0 +1,7 @@
+FROM python:3.7
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /world_code
+WORKDIR /world_code
+COPY world_requirements.txt /world_code/
+RUN pip install -r world_requirements.txt
+COPY . /world_code/

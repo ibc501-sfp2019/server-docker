@@ -1,0 +1,7 @@
+FROM python:3.7
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /observe_code
+WORKDIR /observe_code
+COPY observe_requirements.txt /observe_code/
+RUN pip install -r observe_requirements.txt
+COPY . /observe_code/

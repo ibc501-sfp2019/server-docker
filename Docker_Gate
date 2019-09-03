@@ -1,0 +1,7 @@
+FROM python:3.7
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /gate_code
+WORKDIR /gate_code
+COPY gate_requirements.txt /gate_code/
+RUN pip install -r gate_requirements.txt
+COPY . /gate_code/
