@@ -1,6 +1,5 @@
 # Docker
-gate_mysql/*
-!gate_mysql/.keep
+gate_mysql/mysql_data/*
 
 # Created by https://www.gitignore.io
 
