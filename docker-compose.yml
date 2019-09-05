@@ -7,6 +7,7 @@ services:
       gate_db
     volumes:
       - ./gate_mysql/mysql_data:/var/lib/mysql
+      - ./gate_mysql/mysql_conf:/etc/mysql/conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=gate
@@ -69,6 +70,8 @@ services:
     image: mysql:8
     container_name:
       world_db
+    volumes:
+      - ./world_mysql/mysql_conf:/etc/mysql/conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=world
