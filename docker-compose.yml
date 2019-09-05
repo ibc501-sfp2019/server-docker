@@ -19,9 +19,9 @@ services:
     build:
       context: .
       dockerfile: Docker_Gate
-    command: python ./gate_code/manage.py runserver 0.0.0.0:8000
     container_name:
       gate
+    command:  bash -c "python ./gate_code/mysql_connection_check.py && python ./gate_code/manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/gate_code
     environment:
@@ -40,9 +40,9 @@ services:
     build:
       context: .
       dockerfile: Docker_Observe
-    command: python ./observe_code/manage.py runserver 0.0.0.0:8000
     container_name:
       observe
+    command:  bash -c "python ./observe_code/mysql_connection_check.py && python ./observe_code/manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/observe_code
     expose:
@@ -55,9 +55,9 @@ services:
     build:
       context: .
       dockerfile: Docker_World
-    command: python ./world_code/manage.py runserver 0.0.0.0:8000
     container_name:
       world
+    command:  bash -c "python ./world_code/mysql_connection_check.py && python ./world_code/manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/world_code
     expose:
