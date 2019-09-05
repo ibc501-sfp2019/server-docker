@@ -13,8 +13,8 @@ services:
       - MYSQL_DATABASE=gate
       - MYSQL_USER=test
       - MYSQL_PASSWORD=test
-    ports:
-      - "3306:3306"
+    expose:
+      - "3306"
   gate:
     build:
       context: .
