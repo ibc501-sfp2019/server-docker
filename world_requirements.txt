@@ -1,2 +1,4 @@
 Django>=2.0
 psycopg2>=2.7
+mysqlclient>=1.4.4
+django-mysql>=3.2
