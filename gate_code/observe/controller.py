@@ -2,10 +2,8 @@ from django.http import JsonResponse
 from time import time
 from random import random
 from os import environ
-
-def start_game(request):
-    environ['PLAY_FLG'] = '1'
-    return JsonResponse({'status':200})
+import requests
+from deliverer import Deliverer
 
 def get_position_list(requset):
     data = []
@@ -27,7 +25,3 @@ def get_position_list(requset):
     }
     
     return JsonResponse(res)
-
-def end_game(requset):
-    environ['PLAY_FLG'] = '0'
-    return JsonResponse({'status':200})
