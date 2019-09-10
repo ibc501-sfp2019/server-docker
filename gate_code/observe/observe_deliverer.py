@@ -7,6 +7,6 @@ class ObserveDeliverer(Deliverer):
         to = 'observe:8000/core/locations'
         method = HttpMethods.GET
         params = {
-            'paly_id' : request.GET.get('play_id', '')
+            'play_id' : request.GET.get('play_id', '')
         }
         return ObserveDeliverer.send(request, to, method, params)
