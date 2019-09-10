@@ -1,6 +1,6 @@
 from django.urls import path
-from . import controller
+from .observe_deliverer import ObserveDeliverer
 
 urlpatterns = [
-    path('', controller.get_position_list, name='get_position_list'),
+    path('', ObserveDeliverer.get_ball_location_list, name='get_position_list'),
 ]
