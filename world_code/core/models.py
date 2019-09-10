@@ -19,7 +19,7 @@ class Balls(models.Model):
     play = models.ForeignKey(Plays, on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
 
-    def move(self, term=50, interval=0.1):
+    def move(self, term=100, interval=0.1):
         currunt_location = Locations.objects.filter(ball=self).order_by(models.F('time').desc()).first()
         if currunt_location is None:
             currunt_location = Locations(ball=self, x=0.0, y=0.0, z=0.0, time=timezone.now())
