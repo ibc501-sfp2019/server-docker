@@ -21,7 +21,11 @@ services:
       dockerfile: Docker_Gate
     container_name:
       gate
-    command:  bash -c "python ./gate_code/mysql_connection_check.py && python ./gate_code/manage.py runserver 0.0.0.0:8000"
+    command:  bash -c "
+        python ./gate_code/mysql_connection_check.py &&
+        python ./gate_code/manage.py migrate &&
+        python ./gate_code/manage.py runserver 0.0.0.0:8000
+      "
     volumes:
       - .:/gate_code
     environment:
@@ -42,7 +46,10 @@ services:
       dockerfile: Docker_Observe
     container_name:
       observe
-    command:  bash -c "python ./observe_code/mysql_connection_check.py && python ./observe_code/manage.py runserver 0.0.0.0:8000"
+    command:  bash -c "
+        python ./observe_code/mysql_connection_check.py &&
+        python ./observe_code/manage.py runserver 0.0.0.0:8000
+      "
     volumes:
       - .:/observe_code
     expose:
@@ -57,7 +64,12 @@ services:
       dockerfile: Docker_World
     container_name:
       world
-    command:  bash -c "python ./world_code/mysql_connection_check.py && python ./world_code/manage.py runserver 0.0.0.0:8000"
+    command: bash -c "
+        python ./world_code/mysql_connection_check.py &&
+        python ./world_code/manage.py migrate &&
+        sh ./world_code/snitch_activate.sh &&
+        python ./world_code/manage.py runserver 0.0.0.0:8000
+      "
     volumes:
       - .:/world_code
     expose:
