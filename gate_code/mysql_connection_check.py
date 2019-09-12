@@ -19,7 +19,7 @@ def mysql_connection_check():
     return True
 
 connected = False
-for i in range(15):
+for i in range(60):
     connected = connected or mysql_connection_check()
     if connected: 
         break
