@@ -14,7 +14,7 @@ def get_balls_location_list(request):
         for ball in Balls.objects.filter(play=play):
             print(ball)
             locations = []
-            for l in Locations.objects.filter(ball=ball).filter(time__gte=now).order_by('time')[:50]:
+            for l in Locations.objects.filter(ball=ball).filter(time__gte=now).order_by('time')[:120]:
                 locations.append(l.to_json())
             
             data.append({
