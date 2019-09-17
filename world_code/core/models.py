@@ -27,10 +27,14 @@ class Balls(models.Model):
         p = np.array(
             [currunt_location.x, currunt_location.y, currunt_location.z]
         )
-        v = np.random.rand(3)
+        v = np.random.uniform(low=-0.5, high=0.5, size=(3,))
         time = currunt_location.time
+        uper_limit = np.array([1, 1, 1])
+        lower_limit = np.array([-1, 0, -1])
         for i in range(term):
             p += v*interval
+            p[p > uper_limit] = uper_limit[p > uper_limit]
+            p[lower_limit > p] = lower_limit[lower_limit > p]
             time += timedelta(seconds=interval)
             l = Locations(ball=self, x=p[0], y=p[1], z=p[2], time=time)
             l.save()
